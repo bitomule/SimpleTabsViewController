@@ -70,6 +70,7 @@ public class SimpleTabsViewController: UIViewController {
     //MARK: - Base View
     
     private func createBaseView(){
+        self.view.backgroundColor = fillColor
         createBottomView()
         createTabsContainer()
         createMarker()
@@ -77,6 +78,7 @@ public class SimpleTabsViewController: UIViewController {
     
     private func createBottomView(){
         bottomReference = UIView(frame: CGRect(x: -10, y: 48, width: self.view.bounds.width, height: 2))
+        bottomReference.backgroundColor = bottomFillColor
         bottomReference.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.view.addSubview(bottomReference)
         let trailingConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: bottomReference, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: -10)
@@ -166,6 +168,8 @@ public class SimpleTabsViewController: UIViewController {
     var markerFillColor:UIColor = UIColor.redColor()
     var tabsFont = UIFont.systemFontOfSize(15)
     var numbersFont = UIFont.systemFontOfSize(15)
+    var bottomFillColor = UIColor.grayColor()
+    var fillColor = UIColor.whiteColor()
     
     public func setTabTitleColor(color:UIColor){
         self.textColor = color
@@ -195,6 +199,16 @@ public class SimpleTabsViewController: UIViewController {
     public func setNumberFont(font:UIFont){
         numbersFont = font
         updateTabsStyle()
+    }
+    
+    public func setBottomBackgroundColor(color:UIColor){
+        bottomFillColor = color
+        bottomReference.backgroundColor = bottomFillColor
+    }
+    
+    public func setBackgroundColor(color:UIColor){
+        fillColor = color
+        self.view.backgroundColor = fillColor
     }
     
     private func updateTabsStyle(){
