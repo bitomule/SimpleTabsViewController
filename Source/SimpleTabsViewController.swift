@@ -136,10 +136,6 @@ public class SimpleTabsViewController: UIViewController {
         }
     }
     
-    func tabPressed(sender:UIButton!){
-        setCurrentTab(sender.tag,animated: true)
-    }
-    
     //MARK: - Menu Creation
     
     private func createMenu(){
