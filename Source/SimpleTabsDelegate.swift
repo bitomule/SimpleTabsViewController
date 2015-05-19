@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol SimpleTabsDelegate{
+public protocol SimpleTabsDelegate{
     func tabSelected(tabIndex:Int)
 }

@@ -10,7 +10,7 @@ import UIKit
 
 public class SimpleTabsViewController: UIViewController {
     
-    class func create(parentVC:UIViewController,baseView:UIView?,delegate:SimpleTabsDelegate?,items:[SimpleTabItem]) -> SimpleTabsViewController{
+    public class func create(parentVC:UIViewController,baseView:UIView?,delegate:SimpleTabsDelegate?,items:[SimpleTabItem]) -> SimpleTabsViewController{
         let newVC = SimpleTabsViewController(items: items)
         newVC.delegate = delegate
         newVC.willMoveToParentViewController(parentVC)
