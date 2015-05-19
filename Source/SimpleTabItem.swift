@@ -33,7 +33,7 @@ public class SimpleTabItem:NSObject{
     
     private var labelConstraints = [NSLayoutConstraint]()
     
-    init(title:String,forceShowCount:Bool = false,count:Int=0){
+    public init(title:String,forceShowCount:Bool = false,count:Int=0){
         self.title = title
         self.forceShowCount = forceShowCount
         self.count = count
