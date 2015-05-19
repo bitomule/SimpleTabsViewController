@@ -19,6 +19,8 @@
 		4180CBBC1B0B529100DF130D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180CBB11B0B4A9D00DF130D /* ViewController.swift */; };
 		4180CBBD1B0B529500DF130D /* SimpleTabsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180CBB81B0B4AB400DF130D /* SimpleTabsDelegate.swift */; };
 		4180CBBE1B0B536800DF130D /* SimpleTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180CBBA1B0B4ACF00DF130D /* SimpleTabsViewController.swift */; };
+		4180CBC01B0B6B0900DF130D /* SimpleTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180CBBF1B0B6B0900DF130D /* SimpleTabItem.swift */; };
+		4180CBC11B0B6B4400DF130D /* SimpleTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180CBBF1B0B6B0900DF130D /* SimpleTabItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,7 @@
 		4180CBB11B0B4A9D00DF130D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4180CBB81B0B4AB400DF130D /* SimpleTabsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTabsDelegate.swift; sourceTree = "<group>"; };
 		4180CBBA1B0B4ACF00DF130D /* SimpleTabsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTabsViewController.swift; sourceTree = "<group>"; };
+		4180CBBF1B0B6B0900DF130D /* SimpleTabItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTabItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,7 @@
 			children = (
 				4180CBB81B0B4AB400DF130D /* SimpleTabsDelegate.swift */,
 				4180CBBA1B0B4ACF00DF130D /* SimpleTabsViewController.swift */,
+				4180CBBF1B0B6B0900DF130D /* SimpleTabItem.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -224,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4180CBBB1B0B4ACF00DF130D /* SimpleTabsViewController.swift in Sources */,
+				4180CBC01B0B6B0900DF130D /* SimpleTabItem.swift in Sources */,
 				4180CBB91B0B4AB400DF130D /* SimpleTabsDelegate.swift in Sources */,
 				4180CBB71B0B4A9D00DF130D /* ViewController.swift in Sources */,
 				4180CBB21B0B4A9D00DF130D /* AppDelegate.swift in Sources */,
@@ -235,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4180CBBE1B0B536800DF130D /* SimpleTabsViewController.swift in Sources */,
+				4180CBC11B0B6B4400DF130D /* SimpleTabItem.swift in Sources */,
 				4180CBBD1B0B529500DF130D /* SimpleTabsDelegate.swift in Sources */,
 				4180CBBC1B0B529100DF130D /* ViewController.swift in Sources */,
 				4180CB9E1B0B4A4F00DF130D /* SimpleTabsViewControllerTests.swift in Sources */,

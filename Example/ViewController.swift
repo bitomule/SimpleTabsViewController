@@ -15,10 +15,12 @@ class ViewController: UIViewController,SimpleTabsDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
                 
-        let tab1 = SimpleTabItem(title:"Tab 1",showsCount:false,count:0)
+        let tab1 = SimpleTabItem(title:"Tab 1")
         let tab2 = SimpleTabItem(title:"Another tab",showsCount:true,count:3)
-        let tab3 = SimpleTabItem(title:"Yay",showsCount:false,count:0)
+        let tab3 = SimpleTabItem(title:"Yay")
         vc = SimpleTabsViewController.create(self, baseView: containerView, delegate: self, items: [tab1,tab2,tab3], textColor: UIColor.blackColor(), numbersColor: UIColor.redColor(),numbersBackgroundColor:UIColor.yellowColor(), markerColor: UIColor.greenColor())
+        
+        vc.setTabCount(1, count: 5)
     }
 
     override func didReceiveMemoryWarning() {
