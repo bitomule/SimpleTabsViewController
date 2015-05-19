@@ -10,20 +10,26 @@ import UIKit
 
 public class SimpleTabsViewController: UIViewController {
     
-    public class func create(parentVC:UIViewController,baseView:UIView?,delegate:SimpleTabsDelegate?,items:[SimpleTabItem]) -> SimpleTabsViewController{
+    public class func create(parentVC:UIViewController?,baseView:UIView?,delegate:SimpleTabsDelegate?,items:[SimpleTabItem]) -> SimpleTabsViewController{
         let newVC = SimpleTabsViewController(items: items)
         newVC.delegate = delegate
-        newVC.willMoveToParentViewController(parentVC)
+        if let parentVC = parentVC{
+            newVC.willMoveToParentViewController(parentVC)
+        }
         if let baseView = baseView{
             baseView.addSubview(newVC.view)
         }else{
-            parentVC.view.addSubview(newVC.view)
+            parentVC?.view.addSubview(newVC.view)
         }
         newVC.didMoveToParentViewController(parentVC)
         if let baseView = baseView{
             newVC.view.frame = CGRect(origin: CGPoint(x: 0,y: 0), size: baseView.frame.size)
         }else{
-            newVC.view.frame = CGRect(origin: CGPoint(x: 0,y: 0), size: parentVC.view.frame.size)
+            if let parentVC = parentVC{
+                newVC.view.frame = CGRect(origin: CGPoint(x: 0,y: 0), size: parentVC.view.frame.size)
+            }else{
+                newVC.view.frame = CGRect(origin: CGPoint(x: 0,y: 0), size: CGSize(width: UIScreen.mainScreen().bounds.width, height: 50))
+            }
         }
         return newVC
     }
