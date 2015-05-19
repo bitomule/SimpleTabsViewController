@@ -14,22 +14,24 @@ public class SimpleTabItem:NSObject{
     var count = 0
     var index = 0
     
-    var tabView:UIView!
-    var label:UILabel!
-    var countView:UIView!
-    var countLabel:UILabel!
-    var button:UIButton!
+    internal var tabView:UIView!
+    internal var label:UILabel!
+    internal var countView:UIView!
+    internal var countLabel:UILabel!
+    internal var button:UIButton!
     
-    var numberBackgroundColor:UIColor!
-    var numberFont:UIFont!
-    var numberColor:UIColor!
+    internal var titleColor:UIColor!
+    internal var titleFont:UIFont!
+    internal var numberBackgroundColor:UIColor!
+    internal var numberFont:UIFont!
+    internal var numberColor:UIColor!
     
-    var tabContainer:SimpleTabsViewController!
+    private var tabContainer:SimpleTabsViewController!
     
-    var previousTab:SimpleTabItem?
-    var nextTab:SimpleTabItem?
+    private var previousTab:SimpleTabItem?
+    private var nextTab:SimpleTabItem?
     
-    var labelConstraints = [NSLayoutConstraint]()
+    private var labelConstraints = [NSLayoutConstraint]()
     
     init(title:String,forceShowCount:Bool = false,count:Int=0){
         self.title = title
@@ -37,7 +39,14 @@ public class SimpleTabItem:NSObject{
         self.count = count
     }
     
-    func createTabView(textFont:UIFont,textColor:UIColor,numberFont:UIFont,numberColor:UIColor,numberBackgroundColor:UIColor,tabContainer:SimpleTabsViewController,previousTab:SimpleTabItem?,nextTab:SimpleTabItem?)->UIView{
+    public func createTabView(textFont:UIFont,textColor:UIColor,numberFont:UIFont,numberColor:UIColor,numberBackgroundColor:UIColor,tabContainer:SimpleTabsViewController,previousTab:SimpleTabItem?,nextTab:SimpleTabItem?)->UIView{
+        
+        self.titleColor = textColor
+        self.titleFont = textFont
+        self.numberBackgroundColor = numberBackgroundColor
+        self.numberFont = numberFont
+        self.numberColor = numberColor
+        
         self.tabContainer = tabContainer
         tabView = UIView(frame: CGRect(x: 100, y: 0, width: 100, height: 43))
         tabView.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -45,11 +54,6 @@ public class SimpleTabItem:NSObject{
         label.setContentHuggingPriority(251, forAxis: UILayoutConstraintAxis.Horizontal)
         label.setTranslatesAutoresizingMaskIntoConstraints(false)
         label.text = self.title
-        label.font = textFont
-        label.textColor = textColor
-        self.numberBackgroundColor = numberBackgroundColor
-        self.numberFont = numberFont
-        self.numberColor = numberColor
         tabView.addSubview(label)
         if(self.forceShowCount || self.count > 0){
             showCountView()
@@ -66,11 +70,23 @@ public class SimpleTabItem:NSObject{
         
         self.previousTab = previousTab
         self.nextTab = nextTab
-        
+        updateStyle()
         return tabView
     }
     
-    func updateCount(count:Int){
+    internal func updateStyle(){
+        if let countLabel = countLabel{
+            countLabel.font = numberFont
+            countLabel.textColor = numberColor
+        }
+        if let countView = countView{
+            countView.backgroundColor = numberBackgroundColor
+        }
+        label.font = titleFont
+        label.textColor = titleColor
+    }
+    
+    internal func updateCount(count:Int){
         self.count = count
         if(self.forceShowCount || self.count > 0){
             showCountView()
@@ -79,10 +95,9 @@ public class SimpleTabItem:NSObject{
         }
     }
     
-    func showCountView(){
+    private func showCountView(){
         if(countView == nil){
             countView = UIView()
-            countView.backgroundColor = numberBackgroundColor
             countView.setTranslatesAutoresizingMaskIntoConstraints(false)
             countView.layer.cornerRadius = 6
             countLabel = UILabel()
@@ -94,12 +109,10 @@ public class SimpleTabItem:NSObject{
             setCountLabelConstraints(countLabel,container:countView)
             setLabelWithCountConstraints(label,countView:countView,container: tabView)
         }
-        countLabel.font = numberFont
-        countLabel.textColor = numberColor
         countLabel.text = String(self.count)
     }
     
-    func hideCountView(){
+    private func hideCountView(){
         if(countView != nil){
             countView.removeFromSuperview()
             countView = nil
@@ -107,25 +120,25 @@ public class SimpleTabItem:NSObject{
         }
     }
     
-    func tabPressed(){
+    internal func tabPressed(){
         tabContainer.tabSelected(self.index)
     }
     
     //MARK: - Constraints
     
-    func setConstraints(){
+    internal func setConstraints(){
         setTabCommonConstraints()
         
         if let previousTab = previousTab{
             if let nextTab = nextTab{
-                //Intermedio
+                //Middle
                 setMiddleTabConstraints(previousTab)
             }else{
-                //Ultimo
+                //Last
                 setLastTabConstraints(previousTab)
             }
         }else{
-            //Primero
+            //First
             setFirstTabConstraints()
         }
     }

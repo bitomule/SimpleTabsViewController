@@ -10,13 +10,8 @@ import UIKit
 
 public class SimpleTabsViewController: UIViewController {
     
-    class func create(parentVC:UIViewController,baseView:UIView?,delegate:SimpleTabsDelegate?,items:[SimpleTabItem],textColor:UIColor = UIColor.blackColor(),numbersColor:UIColor = UIColor.blackColor(),numbersBackgroundColor:UIColor = UIColor.yellowColor(),markerColor:UIColor = UIColor.redColor(),tabsFont:UIFont = UIFont.systemFontOfSize(15),numbersFont:UIFont = UIFont.systemFontOfSize(15)) -> SimpleTabsViewController{
+    class func create(parentVC:UIViewController,baseView:UIView?,delegate:SimpleTabsDelegate?,items:[SimpleTabItem]) -> SimpleTabsViewController{
         let newVC = SimpleTabsViewController(items: items)
-        newVC.textColor = textColor
-        newVC.numbersColor = numbersColor
-        newVC.markerColor = markerColor
-        newVC.tabsFont = tabsFont
-        newVC.numbersFont = numbersFont
         newVC.delegate = delegate
         newVC.willMoveToParentViewController(parentVC)
         if let baseView = baseView{
@@ -46,13 +41,6 @@ public class SimpleTabsViewController: UIViewController {
     var centerMarkerConstraint:NSLayoutConstraint?
     var widthMarkerConstraint:NSLayoutConstraint?
     
-    var textColor:UIColor = UIColor.blackColor()
-    var numbersColor:UIColor = UIColor.blackColor()
-    var numbersBackgroundColor:UIColor = UIColor.yellowColor()
-    var markerColor:UIColor = UIColor.redColor()
-    var tabsFont = UIFont.systemFontOfSize(15)
-    var numbersFont = UIFont.systemFontOfSize(15)
-    
     override public func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,7 +55,7 @@ public class SimpleTabsViewController: UIViewController {
         self.items = items
     }
     
-    func setTabCount(tabIndex:Int,count:Int){
+    public func setTabCount(tabIndex:Int,count:Int){
         if(self.items[tabIndex].tabView != nil){
             self.items[tabIndex].updateCount(count)
         }
@@ -105,7 +93,7 @@ public class SimpleTabsViewController: UIViewController {
     
     private func createMarker(){
         activeMarker = UIView(frame: CGRect(x: 50, y: 50, width: 200, height: 2))
-        activeMarker.backgroundColor = markerColor
+        activeMarker.backgroundColor = markerFillColor
         activeMarker.setTranslatesAutoresizingMaskIntoConstraints(false)
         tabsContainer.addSubview(activeMarker)
         let bottomSpaceConstraint = NSLayoutConstraint(item: tabsContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: activeMarker, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 8)
@@ -164,5 +152,54 @@ public class SimpleTabsViewController: UIViewController {
         return item.createTabView(tabsFont, textColor: textColor, numberFont: numbersFont, numberColor: numbersColor, numberBackgroundColor: numbersBackgroundColor, tabContainer: self,previousTab:previousItem,nextTab:nextItem)
     }
     
+    // MARK: - Style
     
+    var textColor:UIColor = UIColor.blackColor()
+    var numbersColor:UIColor = UIColor.blackColor()
+    var numbersBackgroundColor:UIColor = UIColor.yellowColor()
+    var markerFillColor:UIColor = UIColor.redColor()
+    var tabsFont = UIFont.systemFontOfSize(15)
+    var numbersFont = UIFont.systemFontOfSize(15)
+    
+    public func setTabTitleColor(color:UIColor){
+        self.textColor = color
+        updateTabsStyle()
+    }
+    
+    public func setNumberColor(color:UIColor){
+        numbersColor = color
+        updateTabsStyle()
+    }
+    
+    public func setNumberBackgroundColor(color:UIColor){
+        numbersBackgroundColor = color
+        updateTabsStyle()
+    }
+    
+    public func setMarkerColor(color:UIColor){
+        markerFillColor = color
+        activeMarker.backgroundColor = markerFillColor
+    }
+    
+    public func setTabTitleFont(font:UIFont){
+        tabsFont = font
+        updateTabsStyle()
+    }
+    
+    public func setNumberFont(font:UIFont){
+        numbersFont = font
+        updateTabsStyle()
+    }
+    
+    private func updateTabsStyle(){
+        for tab in self.items{
+            tab.titleColor = self.textColor
+            tab.titleFont = self.tabsFont
+            tab.numberFont = self.numbersFont
+            tab.numberColor = self.numbersColor
+            tab.numberBackgroundColor = self.numbersBackgroundColor
+            tab.updateStyle()
+        }
+    }
+
 }

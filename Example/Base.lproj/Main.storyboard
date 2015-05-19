@@ -47,12 +47,23 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0R-D4-T23">
+                                <rect key="frame" x="256" y="338" width="89" height="30"/>
+                                <state key="normal" title="Update Style">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateStyle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v9o-U7-b5y"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="jPa-wN-G8u" secondAttribute="centerX" id="3Gb-Hm-GeQ"/>
                             <constraint firstAttribute="centerX" secondItem="Xeb-b1-0MW" secondAttribute="centerX" id="96b-Xa-vKP"/>
+                            <constraint firstAttribute="centerY" secondItem="G0R-D4-T23" secondAttribute="centerY" constant="-53" id="9E5-Os-2ce"/>
                             <constraint firstAttribute="centerX" secondItem="Vno-Hd-dSp" secondAttribute="centerX" id="J54-CN-1Yb"/>
+                            <constraint firstAttribute="centerX" secondItem="G0R-D4-T23" secondAttribute="centerX" id="LxG-eo-qTk"/>
                             <constraint firstAttribute="centerY" secondItem="jPa-wN-G8u" secondAttribute="centerY" id="NJU-hV-YPh"/>
                             <constraint firstItem="p1M-LV-6DQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="9" id="Ppf-k2-T2T"/>
                             <constraint firstAttribute="centerY" secondItem="Vno-Hd-dSp" secondAttribute="centerY" constant="52" id="V7S-SU-qKr"/>

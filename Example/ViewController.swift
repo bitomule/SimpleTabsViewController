@@ -23,8 +23,29 @@ class ViewController: UIViewController,SimpleTabsDelegate {
         }
         vc.setTabCount(0, count: firstTabCount)
     }
+    
+    @IBAction func updateStyle(sender: AnyObject) {
+        vc.setTabTitleColor(getRandomColor())
+        vc.setNumberColor(getRandomColor())
+        vc.setNumberBackgroundColor(getRandomColor())
+        vc.setMarkerColor(getRandomColor())
+    }
+    
+    func getRandomColor() -> UIColor{
+        
+        var randomRed:CGFloat = CGFloat(drand48())
+        
+        var randomGreen:CGFloat = CGFloat(drand48())
+        
+        var randomBlue:CGFloat = CGFloat(drand48())
+        
+        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+        
+    }
+    
     @IBOutlet weak var indexSelectedLabel: UILabel!
 
+    
     var vc:SimpleTabsViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +54,13 @@ class ViewController: UIViewController,SimpleTabsDelegate {
         let tab1 = SimpleTabItem(title:"Tab 1")
         let tab2 = SimpleTabItem(title:"Another tab",count:3)
         let tab3 = SimpleTabItem(title:"Yay")
-        vc = SimpleTabsViewController.create(self, baseView: containerView, delegate: self, items: [tab1,tab2,tab3], textColor: UIColor.blackColor(), numbersColor: UIColor.redColor(),numbersBackgroundColor:UIColor.yellowColor(), markerColor: UIColor.greenColor())
+        vc = SimpleTabsViewController.create(self, baseView: containerView, delegate: self, items: [tab1,tab2,tab3])
+        vc.setTabTitleColor(UIColor.blackColor())
+        vc.setNumberColor(UIColor.blackColor())
+        vc.setNumberBackgroundColor(UIColor.yellowColor())
+        vc.setMarkerColor(UIColor.greenColor())
+        vc.setTabTitleFont(UIFont.systemFontOfSize(16))
+        vc.setNumberFont(UIFont.systemFontOfSize(15))
     }
 
     override func didReceiveMemoryWarning() {
