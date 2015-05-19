@@ -23,24 +23,47 @@
                                     <constraint firstAttribute="height" constant="60" id="FaP-S8-V89"/>
                                 </constraints>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vno-Hd-dSp">
+                                <rect key="frame" x="221" y="233" width="158" height="30"/>
+                                <state key="normal" title="Increase first tab count">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="increaseCount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="du3-D6-YCt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPa-wN-G8u">
+                                <rect key="frame" x="218" y="285" width="164" height="30"/>
+                                <state key="normal" title="Decrease first tab count">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="decreaseCount:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XMw-i3-Shu"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Index selected: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xeb-b1-0MW">
+                                <rect key="frame" x="235" y="391" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="jPa-wN-G8u" secondAttribute="centerX" id="3Gb-Hm-GeQ"/>
+                            <constraint firstAttribute="centerX" secondItem="Xeb-b1-0MW" secondAttribute="centerX" id="96b-Xa-vKP"/>
+                            <constraint firstAttribute="centerX" secondItem="Vno-Hd-dSp" secondAttribute="centerX" id="J54-CN-1Yb"/>
+                            <constraint firstAttribute="centerY" secondItem="jPa-wN-G8u" secondAttribute="centerY" id="NJU-hV-YPh"/>
                             <constraint firstItem="p1M-LV-6DQ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="9" id="Ppf-k2-T2T"/>
-                            <constraint firstAttribute="centerY" secondItem="p1M-LV-6DQ" secondAttribute="centerY" id="R1g-ht-Dpo"/>
+                            <constraint firstAttribute="centerY" secondItem="Vno-Hd-dSp" secondAttribute="centerY" constant="52" id="V7S-SU-qKr"/>
                             <constraint firstItem="p1M-LV-6DQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Wip-Nt-YaW"/>
-                            <constraint firstAttribute="centerX" secondItem="p1M-LV-6DQ" secondAttribute="centerX" id="hPx-RG-4BV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="p1M-LV-6DQ" secondAttribute="trailing" id="mAT-b4-8Ab"/>
+                            <constraint firstAttribute="centerY" secondItem="Xeb-b1-0MW" secondAttribute="centerY" constant="-101.5" id="yh1-ey-7di"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="R1g-ht-Dpo"/>
-                                <exclude reference="hPx-RG-4BV"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="p1M-LV-6DQ" id="ChT-mc-rvT"/>
+                        <outlet property="indexSelectedLabel" destination="Xeb-b1-0MW" id="wXb-3s-8pX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

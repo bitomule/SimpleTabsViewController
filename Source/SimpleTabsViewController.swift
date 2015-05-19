@@ -17,6 +17,7 @@ public class SimpleTabsViewController: UIViewController {
         newVC.markerColor = markerColor
         newVC.tabsFont = tabsFont
         newVC.numbersFont = numbersFont
+        newVC.delegate = delegate
         newVC.willMoveToParentViewController(parentVC)
         if let baseView = baseView{
             baseView.addSubview(newVC.view)
@@ -67,8 +68,8 @@ public class SimpleTabsViewController: UIViewController {
     }
     
     func setTabCount(tabIndex:Int,count:Int){
-        if(self.items[tabIndex].countLabel != nil){
-            self.items[tabIndex].countLabel.text = String(count)
+        if(self.items[tabIndex].tabView != nil){
+            self.items[tabIndex].updateCount(count)
         }
     }
     
@@ -115,9 +116,13 @@ public class SimpleTabsViewController: UIViewController {
     
     //MARK: - Tabs
     
+    internal func tabSelected(tab:Int){
+        setCurrentTab(tab,animated:true)
+        delegate?.tabSelected(tab)
+    }
+    
     public func setCurrentTab(tab:Int,animated:Bool){
         currentTab = tab
-        delegate?.tabSelected(tab)
         if(centerMarkerConstraint != nil && widthMarkerConstraint != nil){
             self.tabsContainer.removeConstraints([centerMarkerConstraint!,widthMarkerConstraint!])
         }

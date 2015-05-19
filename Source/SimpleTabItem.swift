@@ -10,7 +10,7 @@ import UIKit
 
 public class SimpleTabItem:NSObject{
     var title = ""
-    var showsCount = false
+    var forceShowCount = false
     var count = 0
     var index = 0
     
@@ -20,14 +20,20 @@ public class SimpleTabItem:NSObject{
     var countLabel:UILabel!
     var button:UIButton!
     
+    var numberBackgroundColor:UIColor!
+    var numberFont:UIFont!
+    var numberColor:UIColor!
+    
     var tabContainer:SimpleTabsViewController!
     
     var previousTab:SimpleTabItem?
     var nextTab:SimpleTabItem?
     
-    init(title:String,showsCount:Bool = false,count:Int=0){
+    var labelConstraints = [NSLayoutConstraint]()
+    
+    init(title:String,forceShowCount:Bool = false,count:Int=0){
         self.title = title
-        self.showsCount = showsCount
+        self.forceShowCount = forceShowCount
         self.count = count
     }
     
@@ -41,22 +47,12 @@ public class SimpleTabItem:NSObject{
         label.text = self.title
         label.font = textFont
         label.textColor = textColor
+        self.numberBackgroundColor = numberBackgroundColor
+        self.numberFont = numberFont
+        self.numberColor = numberColor
         tabView.addSubview(label)
-        if(self.showsCount){
-            //Create count view
-            countView = UIView()
-            countView.backgroundColor = numberBackgroundColor
-            countView.setTranslatesAutoresizingMaskIntoConstraints(false)
-            countView.layer.cornerRadius = 6
-            countLabel = UILabel()
-            countLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-            countLabel.font = numberFont
-            countLabel.textColor = numberColor
-            countLabel.text = String(self.count)
-            countView.addSubview(countLabel)
-            tabView.addSubview(countView)
-            setCountLabelConstraints(countLabel,container:countView)
-            setLabelWithCountConstraints(label,countView:countView,container: tabView)
+        if(self.forceShowCount || self.count > 0){
+            showCountView()
         }else{
             setLabelConstraints(label,container: tabView)
         }
@@ -74,10 +70,46 @@ public class SimpleTabItem:NSObject{
         return tabView
     }
     
-    func tabPressed(){
-        tabContainer.setCurrentTab(self.index, animated: true)
+    func updateCount(count:Int){
+        self.count = count
+        if(self.forceShowCount || self.count > 0){
+            showCountView()
+        }else{
+            hideCountView()
+        }
     }
     
+    func showCountView(){
+        if(countView == nil){
+            countView = UIView()
+            countView.backgroundColor = numberBackgroundColor
+            countView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            countView.layer.cornerRadius = 6
+            countLabel = UILabel()
+            countLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            countView.addSubview(countLabel)
+            tabView.addSubview(countView)
+            tabView.removeConstraints(labelConstraints)
+            label.removeConstraints(labelConstraints)
+            setCountLabelConstraints(countLabel,container:countView)
+            setLabelWithCountConstraints(label,countView:countView,container: tabView)
+        }
+        countLabel.font = numberFont
+        countLabel.textColor = numberColor
+        countLabel.text = String(self.count)
+    }
+    
+    func hideCountView(){
+        if(countView != nil){
+            countView.removeFromSuperview()
+            countView = nil
+            setLabelConstraints(label,container: tabView)
+        }
+    }
+    
+    func tabPressed(){
+        tabContainer.tabSelected(self.index)
+    }
     
     //MARK: - Constraints
     
@@ -114,14 +146,16 @@ public class SimpleTabItem:NSObject{
         let trailingSpaceFromCount = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: countView, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 11)
         let leadingSpace = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 11)
         let centerY = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: countView, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: 0)
-        container.addConstraints([alignYCenter,trailingSpace,trailingSpaceFromCount,leadingSpace,centerY])
+        labelConstraints = [alignYCenter,trailingSpace,trailingSpaceFromCount,leadingSpace,centerY]
+        container.addConstraints(labelConstraints)
     }
     
     private func setLabelConstraints(label:UILabel,container:UIView){
         let alignYCenter = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: -4)
         let trailingSpace = NSLayoutConstraint(item: container, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: 11)
         let leadingSpace = NSLayoutConstraint(item: label, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: container, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 11)
-        container.addConstraints([alignYCenter,trailingSpace,leadingSpace])
+        labelConstraints = [alignYCenter,trailingSpace,leadingSpace]
+        container.addConstraints(labelConstraints)
     }
     
     private func setButtonConstraints(button:UIButton,container:UIView){
