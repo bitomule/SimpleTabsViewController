@@ -108,6 +108,7 @@ public class SimpleTabItem:NSObject{
             label.removeConstraints(labelConstraints)
             setCountLabelConstraints(countLabel,container:countView)
             setLabelWithCountConstraints(label,countView:countView,container: tabView)
+            updateStyle()
         }
         countLabel.text = String(self.count)
     }
