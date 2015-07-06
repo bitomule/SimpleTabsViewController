@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
   s.social_media_url   = "http://twitter.com/bitomule"
 
   s.platform     = :ios
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "8.1"
 
   s.source       = { :git => "https://github.com/bitomule/SimpleTabsViewController.git", :tag => "0.1.0" }
 
