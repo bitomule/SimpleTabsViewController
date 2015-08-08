@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "SimpleTabsViewController"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "iOS view controller for custom and dynamic horizontal tabs."
 
   s.description  = <<-DESC
@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios
   s.platform     = :ios, "8.1"
 
-  s.source       = { :git => "https://github.com/bitomule/SimpleTabsViewController.git", :tag => "0.1.0" }
+  s.source       = { :git => "https://github.com/bitomule/SimpleTabsViewController.git", :tag => "0.1.1" }
 
   s.source_files = 'Source/*.swift'
   s.requires_arc = true

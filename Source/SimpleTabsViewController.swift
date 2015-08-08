@@ -71,6 +71,7 @@ public class SimpleTabsViewController: UIViewController {
     
     private func createBaseView(){
         self.view.backgroundColor = fillColor
+        self.view.clipsToBounds = true
         createBottomView()
         createTabsContainer()
         createMarker()
