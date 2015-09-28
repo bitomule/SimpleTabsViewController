@@ -131,7 +131,7 @@ public class SimpleTabItem:NSObject{
         setTabCommonConstraints()
         
         if let previousTab = previousTab{
-            if let nextTab = nextTab{
+            if(nextTab != nil){
                 //Middle
                 setMiddleTabConstraints(previousTab)
             }else{
