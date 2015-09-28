@@ -80,7 +80,7 @@ public class SimpleTabsViewController: UIViewController {
     private func createBottomView(){
         bottomReference = UIView(frame: CGRect(x: -10, y: 48, width: self.view.bounds.width, height: 2))
         bottomReference.backgroundColor = bottomFillColor
-        bottomReference.setTranslatesAutoresizingMaskIntoConstraints(false)
+        bottomReference.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(bottomReference)
         let trailingConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: bottomReference, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: -10)
         let leadingConstraint = NSLayoutConstraint(item: bottomReference, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: -10)
@@ -92,7 +92,7 @@ public class SimpleTabsViewController: UIViewController {
     
     private func createTabsContainer(){
         tabsContainer = UIView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
-        tabsContainer.setTranslatesAutoresizingMaskIntoConstraints(false)
+        tabsContainer.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(tabsContainer)
         let centerXConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: tabsContainer, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0)
         let centerYConstraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: tabsContainer, attribute: NSLayoutAttribute.CenterY, multiplier: 1, constant: -4)
@@ -103,7 +103,7 @@ public class SimpleTabsViewController: UIViewController {
     private func createMarker(){
         activeMarker = UIView(frame: CGRect(x: 50, y: 50, width: 200, height: 2))
         activeMarker.backgroundColor = markerFillColor
-        activeMarker.setTranslatesAutoresizingMaskIntoConstraints(false)
+        activeMarker.translatesAutoresizingMaskIntoConstraints = false
         tabsContainer.addSubview(activeMarker)
         let bottomSpaceConstraint = NSLayoutConstraint(item: tabsContainer, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: activeMarker, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 8)
         let heightConstraint = NSLayoutConstraint(item: activeMarker, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.Height, multiplier: 1, constant: 2)

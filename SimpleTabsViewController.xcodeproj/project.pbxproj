@@ -12,7 +12,6 @@
 		4180CBB31B0B4A9D00DF130D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4180CBAB1B0B4A9D00DF130D /* LaunchScreen.xib */; };
 		4180CBB41B0B4A9D00DF130D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4180CBAD1B0B4A9D00DF130D /* Main.storyboard */; };
 		4180CBB51B0B4A9D00DF130D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4180CBAF1B0B4A9D00DF130D /* Images.xcassets */; };
-		4180CBB61B0B4A9D00DF130D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4180CBB01B0B4A9D00DF130D /* Info.plist */; };
 		4180CBB71B0B4A9D00DF130D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180CBB11B0B4A9D00DF130D /* ViewController.swift */; };
 		4180CBB91B0B4AB400DF130D /* SimpleTabsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180CBB81B0B4AB400DF130D /* SimpleTabsDelegate.swift */; };
 		4180CBBB1B0B4ACF00DF130D /* SimpleTabsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4180CBBA1B0B4ACF00DF130D /* SimpleTabsViewController.swift */; };
@@ -170,7 +169,9 @@
 		4180CB7A1B0B4A4F00DF130D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "David Collado Sela";
 				TargetAttributes = {
 					4180CB811B0B4A4F00DF130D = {
@@ -206,7 +207,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4180CBB61B0B4A9D00DF130D /* Info.plist in Resources */,
 				4180CBB51B0B4A9D00DF130D /* Images.xcassets in Resources */,
 				4180CBB31B0B4A9D00DF130D /* LaunchScreen.xib in Resources */,
 				4180CBB41B0B4A9D00DF130D /* Main.storyboard in Resources */,
@@ -298,6 +298,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -366,6 +367,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bitomule.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -376,6 +378,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bitomule.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -394,6 +397,7 @@
 				);
 				INFOPLIST_FILE = SimpleTabsViewControllerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bitomule.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleTabsViewController.app/SimpleTabsViewController";
 			};
@@ -409,6 +413,7 @@
 				);
 				INFOPLIST_FILE = SimpleTabsViewControllerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bitomule.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleTabsViewController.app/SimpleTabsViewController";
 			};

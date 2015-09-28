@@ -49,10 +49,10 @@ public class SimpleTabItem:NSObject{
         
         self.tabContainer = tabContainer
         tabView = UIView(frame: CGRect(x: 100, y: 0, width: 100, height: 43))
-        tabView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        tabView.translatesAutoresizingMaskIntoConstraints = false
         label = UILabel()
         label.setContentHuggingPriority(251, forAxis: UILayoutConstraintAxis.Horizontal)
-        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = self.title
         tabView.addSubview(label)
         if(self.forceShowCount || self.count > 0){
@@ -64,7 +64,7 @@ public class SimpleTabItem:NSObject{
         button = UIButton()
         button.addTarget(self, action: "tabPressed", forControlEvents: UIControlEvents.TouchUpInside)
         button.setContentHuggingPriority(250, forAxis: UILayoutConstraintAxis.Horizontal)
-        button.setTranslatesAutoresizingMaskIntoConstraints(false)
+        button.translatesAutoresizingMaskIntoConstraints = false
         tabView.addSubview(button)
         setButtonConstraints(button,container: tabView)
         
@@ -98,10 +98,10 @@ public class SimpleTabItem:NSObject{
     private func showCountView(){
         if(countView == nil){
             countView = UIView()
-            countView.setTranslatesAutoresizingMaskIntoConstraints(false)
+            countView.translatesAutoresizingMaskIntoConstraints = false
             countView.layer.cornerRadius = 6
             countLabel = UILabel()
-            countLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+            countLabel.translatesAutoresizingMaskIntoConstraints = false
             countView.addSubview(countLabel)
             tabView.addSubview(countView)
             tabView.removeConstraints(labelConstraints)
