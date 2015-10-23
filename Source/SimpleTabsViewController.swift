@@ -36,7 +36,7 @@ public class SimpleTabsViewController: UIViewController {
     
     var items:[SimpleTabItem] = [SimpleTabItem]()
     var currentTab = 0
-    var delegate:SimpleTabsDelegate?
+    weak var delegate:SimpleTabsDelegate?
     
     var tabsContainer: UIView!
     
@@ -221,6 +221,15 @@ public class SimpleTabsViewController: UIViewController {
             tab.numberBackgroundColor = self.numbersBackgroundColor
             tab.updateStyle()
         }
+    }
+    
+    deinit{
+        delegate = nil
+        tabsContainer = nil
+        activeMarker = nil
+        bottomReference = nil
+        centerMarkerConstraint = nil
+        widthMarkerConstraint = nil
     }
 
 }
