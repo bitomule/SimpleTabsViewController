@@ -1,3 +1,5 @@
+⛔️ DEPRECATED I'm no longer supporting this lib.
+
 # SimpleTabsViewController
 iOS view controller for custom and dynamic horizontal tabs.
 
